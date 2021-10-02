@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import { wait } from './wait'
+import {getKtfmt} from './installer'
 
 async function run(): Promise<void> {
   try {
@@ -7,7 +7,7 @@ async function run(): Promise<void> {
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
 
     core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
+    const jar = await getKtfmt()
     core.debug(new Date().toTimeString())
 
     core.setOutput('time', new Date().toTimeString())
