@@ -2,10 +2,9 @@ name: 'Your name here'
 description: 'Provide a description here'
 author: 'Your name or organization here'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  style:
+    required: false
+    description: 'The style the code should be formatted as (dropbox, google, or kotlinlang). When not provided, defaults to facebook style.'
 runs:
   using: 'node12'
   main: 'dist/index.js'

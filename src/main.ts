@@ -4,12 +4,12 @@ import {getKtfmt} from './installer'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const style: string = core.getInput('style')
+    core.debug(`Checking code against ${style || 'facebook'} style ...`)
 
     const jar = await getKtfmt()
 
-    // TODO: Accept style as an argument to the action
+    // TODO: Apply provided style
     // TODO: Allow files / directions to be specified too
     await exec.exec('java', [
       '-jar',
