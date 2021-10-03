@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+import * as exec from '@actions/exec'
 import {getKtfmt} from './installer'
 
 async function run(): Promise<void> {
@@ -6,11 +7,11 @@ async function run(): Promise<void> {
     const ms: string = core.getInput('milliseconds')
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
 
-    core.debug(new Date().toTimeString())
     const jar = await getKtfmt()
-    core.debug(new Date().toTimeString())
 
-    core.setOutput('time', new Date().toTimeString())
+    // TODO: Accept style as an argument to the action
+    // TODO: Allow files / directions to be specified too
+    await exec.exec('java', ['-jar', jar, '--kotlinlang-style', '.'])
   } catch (error) {
     if (error instanceof Error) {
       core.setFailed(error.message)
