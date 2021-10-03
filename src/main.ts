@@ -11,7 +11,13 @@ async function run(): Promise<void> {
 
     // TODO: Accept style as an argument to the action
     // TODO: Allow files / directions to be specified too
-    await exec.exec('java', ['-jar', jar, '--kotlinlang-style', '.'])
+    await exec.exec('java', [
+      '-jar',
+      jar,
+      '--set-exit-if-changed',
+      '--kotlinlang-style',
+      '.'
+    ])
   } catch (error) {
     if (error instanceof Error) {
       core.setFailed(error.message)
