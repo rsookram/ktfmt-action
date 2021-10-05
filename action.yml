@@ -4,7 +4,7 @@ author: 'Your name or organization here'
 inputs:
   style:
     required: false
-    description: 'The style the code should be formatted as (dropbox, google, or kotlinlang). When not provided, defaults to facebook style.'
+    description: 'The style the code should be formatted as (dropbox, google, or kotlinlang). Defaults to facebook style.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
