@@ -1,6 +1,6 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'ktfmt-action'
+description: 'Github action for ktfmt'
+author: 'Rashad Sookram'
 inputs:
   style:
     required: false
