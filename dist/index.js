@@ -98,11 +98,16 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const style = core.getInput('style');
+            const path = core.getInput('path');
             core.debug(`Checking code against ${style || 'facebook'} style ...`);
             const args = [
                 '-jar',
-                yield installer_1.getKtfmt(),
+                yield installer_1.getKtfmt()
+                // This option will be supported in the next release of ktfmt (the version after 0.28).
+                // https://github.com/facebookincubator/ktfmt/commit/b44c58b410d2a871bf71ec950f76d194c01cfbb3
+                // '--set-exit-if-changed',
             ];
+            // TODO: Consider creating argparse file?
             switch (style) {
                 case 'dropbox':
                     args.push('--dropbox-style');
@@ -119,8 +124,7 @@ function run() {
                 default:
                     throw new Error(`invalid style '${style}' provided, expected one of [dropbox, google, kotlinlang]`);
             }
-            args.push('.');
-            // TODO: Allow files / directions to be specified too
+            args.push(path);
             yield exec.exec('java', args);
         }
         catch (error) {

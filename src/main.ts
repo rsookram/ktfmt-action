@@ -4,7 +4,8 @@ import {getKtfmt} from './installer'
 
 async function run(): Promise<void> {
   try {
-    const style: string = core.getInput('style')
+    const style = core.getInput('style')
+    const path = core.getInput('path')
     core.debug(`Checking code against ${style || 'facebook'} style ...`)
 
     const args = [
@@ -34,9 +35,8 @@ async function run(): Promise<void> {
         )
     }
 
-    args.push('.')
+    args.push(path)
 
-    // TODO: Allow files / directions to be specified too
     await exec.exec('java', args)
   } catch (error) {
     if (error instanceof Error) {

@@ -5,6 +5,12 @@ inputs:
   style:
     required: false
     description: 'The style the code should be formatted as (dropbox, google, or kotlinlang). Defaults to facebook style.'
+    default: ''
+  path:
+    required: false
+    # TODO: Consider supporting multiple (comma-separated?)
+    description: 'The file / directory to apply ktfmt to.'
+    default: '.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
