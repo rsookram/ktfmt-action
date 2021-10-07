@@ -8,13 +8,7 @@ async function run(): Promise<void> {
     const path = core.getInput('path')
     core.debug(`Checking code against ${style || 'facebook'} style ...`)
 
-    const args = [
-      '-jar',
-      await getKtfmt()
-      // This option will be supported in the next release of ktfmt (the version after 0.28).
-      // https://github.com/facebookincubator/ktfmt/commit/b44c58b410d2a871bf71ec950f76d194c01cfbb3
-      // '--set-exit-if-changed',
-    ]
+    const args = ['-jar', await getKtfmt(), '--set-exit-if-changed']
 
     switch (style) {
       case 'dropbox':

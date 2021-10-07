@@ -43,7 +43,7 @@ const tc = __importStar(__nccwpck_require__(784));
  */
 function getKtfmt() {
     return __awaiter(this, void 0, void 0, function* () {
-        const version = '0.28';
+        const version = '0.29';
         const url = `https://search.maven.org/remotecontent?filepath=com/facebook/ktfmt/${version}/ktfmt-${version}-jar-with-dependencies.jar`;
         core.info(`Downloading ${url}`);
         // TODO: Try caching the file
@@ -102,10 +102,8 @@ function run() {
             core.debug(`Checking code against ${style || 'facebook'} style ...`);
             const args = [
                 '-jar',
-                yield installer_1.getKtfmt()
-                // This option will be supported in the next release of ktfmt (the version after 0.28).
-                // https://github.com/facebookincubator/ktfmt/commit/b44c58b410d2a871bf71ec950f76d194c01cfbb3
-                // '--set-exit-if-changed',
+                yield installer_1.getKtfmt(),
+                '--set-exit-if-changed'
             ];
             // TODO: Consider creating argparse file?
             switch (style) {
