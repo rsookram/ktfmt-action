@@ -9,7 +9,7 @@ inputs:
   path:
     required: false
     # TODO: Consider supporting multiple (comma-separated?)
-    description: 'The file / directory to apply ktfmt to.'
+    description: 'The file / directory to apply ktfmt to. Defaults to all Kotlin files in the repository.'
     default: '.'
 runs:
   using: 'node12'
