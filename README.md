@@ -40,7 +40,7 @@ on:
            java-version: '11'
 
        - name: "ktfmt"
-         uses: "rsookram/ktfmt-action@main"
+         uses: rsookram/ktfmt-action@v1
          with:
            style: kotlinlang
 ```
